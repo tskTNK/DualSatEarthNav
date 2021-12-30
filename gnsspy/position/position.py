@@ -29,7 +29,7 @@ def mdpo(station, stationR, orbit, system="G", cut_off=7.0):
 
     gnss = gnssDataframe(station, orbit, system, cut_off)
     gnssR = gnssDataframe(stationR, orbit, system, cut_off)
-
+    #
     # print("gnss")
     # print(gnss)
 
@@ -162,10 +162,10 @@ def mdpo(station, stationR, orbit, system="G", cut_off=7.0):
             numOfEpochs = numOfEpochs + 1
 
         else:
-            # print ("stop at epoch")
-            # print (numOfEpochs)
+            print ("stop at epoch")
+            print (numOfEpochs)
 
-            if numOfEpochs > 10:
+            if numOfEpochs > 5:
                 # DOP Calculation
                 # print (coeffMatrixD[0:numOfEpochs])
                 # print (lMatrixD[0:numOfEpochs])
@@ -174,8 +174,8 @@ def mdpo(station, stationR, orbit, system="G", cut_off=7.0):
                 GDOP = (DOP[0][0]+DOP[1][1])**0.5
                 XDOP = (DOP[0][0])**0.5
                 YDOP = (DOP[1][1])**0.5
-                # print("GDOP, XDOP, YDOP")
-                # print([GDOP, XDOP, YDOP])
+                print("GDOP XDOP YDOP")
+                print([GDOP, XDOP, YDOP])
 
                 if GDOP < 10:
                     try:
@@ -187,8 +187,8 @@ def mdpo(station, stationR, orbit, system="G", cut_off=7.0):
                     except:
                         print("Cannot solve normal equations for epoch", epoch_start,"| Skipping...")
 
-                    # print("posD")
-                    # print([posD[0], posD[1], posD[2]])
+                    print("posD")
+                    print([posD[0], posD[1], posD[2]])
                     position_listD.append(posD)
 
             numOfEpochs = 0
@@ -296,10 +296,10 @@ def dpp(station, stationR, orbit, system="G", cut_off=7.0):
         gnss_tempR = gnss_temp2R
 
         # adding satellite clock bias for debug
-        for count in range(len(gnss_temp)):
-            gnss_temp.Relativistic_clock[count] = 0.0000002*count
-        for count in range(len(gnss_tempR)):
-            gnss_tempR.Relativistic_clock[count] = 0.0000002*count
+        # for count in range(len(gnss_temp)):
+        #     gnss_temp.Relativistic_clock[count] = 0.0000002*count
+        # for count in range(len(gnss_tempR)):
+        #     gnss_tempR.Relativistic_clock[count] = 0.0000002*count
 
         for iter in range(6):
             distance = _distance_euclidean(approx_position[0],approx_position[1],approx_position[2], gnss_temp.X_Reception, gnss_temp.Y_Reception, gnss_temp.Z_Reception)
