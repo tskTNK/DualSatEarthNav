@@ -1,3 +1,8 @@
+# Note
+The author added an extra function, Multi-Epoch Double-Differenced Pseudorange Observations(MDPO) estimation, to the GNSSpy developed by Mustafa Serkan Isik and Volkan Ozbey. I leave the copy of the details of GNSSpy below to be referred by the users. 
+
+About MDPO estimation: https://www.mdpi.com/2226-4310/7/9/122
+
 # GNSSpy
 Python Toolkit for GNSS Data developed by Mustafa Serkan Isik (isikm@itu.edu.tr) and Volkan Ozbey (ozbeyv@itu.edu.tr). This project is still a work in progress. Send us your feedback if possible...
 
